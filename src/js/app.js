@@ -73,11 +73,11 @@ App = {
     let petId = parseInt($(event.target).data('id'));
 
     web3.eth.getAccounts(function(err, accounts) {
-      if (error) console.warn(error);
+      if (err) console.warn(err);
 
       const account = accounts[0];
 
-      App.contract.Adoption.deployed()
+      App.contracts.Adoption.deployed()
         .then(function(instance) {
         return instance.adopt(petId, {from: account})
         })
